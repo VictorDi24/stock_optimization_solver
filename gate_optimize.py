@@ -8,6 +8,10 @@ import numpy as np
 import scipy.sparse as sp
 from scipy import stats
 
+random.seed(21)
+BASE_DIR = Path(__file__).resolve().parent
+file_weights = BASE_DIR / "short_arr_a.npz"
+file_sectors = BASE_DIR / "sector.npz"
 
 def timer(func):
     @functools.wraps(func)
@@ -46,7 +50,7 @@ def get_config():
 
 def generate_weights(config):
     start = time.perf_counter()
-    temp = np.load("/home/cding/IdeaProjects/cvxpy_optimize/short_arr_a.npz")
+    temp = np.load(file_weights)
 
     # weights = temp["x"]
     on_off = temp["y"]
